@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F5F4F0">
+  <meta name="robots" content="noindex">
+  <title>404 · 页面不存在 | 游戏测试服务</title>
+  <link rel="icon" href="/game-qa-site/assets/favicon.svg" type="image/svg+xml">
+  <style>
+    :root {
+      --paper: #F5F4F0;
+      --navy: #2E4280;
+      --navy-dark: #22305D;
+      --navy-ink: #1C2542;
+      --red: #C63635;
+      --ink: #14161C;
+      --muted: #5E6270;
+      --line: rgba(46, 66, 128, .16);
+      --font-cn: "PingFang SC", "HarmonyOS Sans SC", "Source Han Sans SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+      --font-en: "Helvetica Neue", "Arial Black", "Segoe UI", Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 32px 24px;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--font-cn);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { width: 100%; max-width: 620px; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 28px;
+      font: 600 12px/1 var(--font-en);
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--navy);
+    }
+    .eyebrow::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--line);
+    }
+    .code {
+      margin: 0;
+      font: 700 clamp(76px, 22vw, 132px)/.86 var(--font-en);
+      letter-spacing: -.04em;
+      color: var(--navy);
+    }
+    .code span { color: var(--red); }
+    h1 {
+      margin: 22px 0 12px;
+      font-size: clamp(21px, 4.4vw, 27px);
+      line-height: 1.4;
+      letter-spacing: -.01em;
+      color: var(--navy-ink);
+    }
+    p {
+      margin: 0 0 30px;
+      max-width: 46ch;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 26px;
+      border: 1px solid var(--navy);
+      border-radius: 999px;
+      background: var(--navy);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .2s ease, color .2s ease, transform .2s ease;
+    }
+    .btn:hover { background: var(--navy-dark); transform: translateY(-1px); }
+    .btn--ghost { background: transparent; color: var(--navy); }
+    .btn--ghost:hover { background: rgba(46, 66, 128, .08); }
+    .btn:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; }
+    .seal {
+      margin-top: 44px;
+      display: inline-block;
+      padding: 6px 10px;
+      border: 2px solid var(--red);
+      border-radius: 4px;
+      color: var(--red);
+      font: 700 11px/1.2 var(--font-en);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      transform: rotate(-3deg);
+      opacity: .85;
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="eyebrow">Game QA Service</p>
+    <p class="code">4<span>0</span>4</p>
+    <h1>这个页面不存在，可能是链接过期或拼写有误。</h1>
+    <p>站点已迁移到新地址，首页仍然可以正常访问：团队介绍、项目版图、服务范围、交付保障、合作案例与联系方式都在那里。</p>
+    <div class="actions">
+      <a class="btn" href="/game-qa-site/">返回首页</a>
+      <a class="btn btn--ghost" href="tel:+8618601291984">电话咨询 186 0129 1984</a>
+    </div>
+    <p class="seal">Page not found</p>
+  </main>
+</body>
+</html>

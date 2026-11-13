@@ -1,0 +1,10 @@
+# macOS
+.DS_Store
+
+# 本地临时文件 / 隧道客户端 / 日志
+.cache/
+*.log
+tmp/
+
+# 站点打包产物（内容与仓库重复，不入库，保留在本地）
+game-qa-service-site.zip
