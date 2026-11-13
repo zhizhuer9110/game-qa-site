@@ -83,8 +83,13 @@ NewTeam/
 | --- | --- |
 | 正式站点 | **https://zhizhuer9110.github.io/game-qa-site/** |
 | 代码仓库 | https://github.com/zhizhuer9110/game-qa-site |
-| 托管方式 | GitHub Pages，发布源 `main` 分支根目录，纯静态、无构建 |
+| 托管方式 | GitHub Pages（GitHub Actions 部署），纯静态、无构建 |
 | 发布延迟 | push 后约 1 分钟自动更新 |
+| 部署流水线 | [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) |
+
+首次部署由 workflow 自动启用 Pages（`actions/configure-pages` 的 `enablement: true`），**不需要进 Settings → Pages 手动选分支**。
+
+如果以后想改用「分支部署」更省事：Settings → Pages → Source 选 `Deploy from a branch` → `main` / `(root)`，然后可以删除 workflow 文件。
 
 ### 更新网站
 
