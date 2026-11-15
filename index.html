@@ -21,7 +21,7 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" as="image" href="assets/img/players.jpg">
   <script>document.documentElement.classList.add("js");</script>
-  <link rel="stylesheet" href="assets/css/style.css?v=20261104">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261116">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -76,6 +76,7 @@
   <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 20c0-3.3 2.7-5.5 6-5.5s6 2.2 6 5.5M16 5.2a3.2 3.2 0 010 5.9M18 14.8c2.3.6 3.8 2.4 3.8 4.7" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
   <symbol id="i-device" viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 5.5h3M11 18.5h2" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/></symbol>
 </svg>
 
 <header class="site-header" id="siteHeader">
@@ -99,7 +100,7 @@
       <div class="nav-foot">
         <a class="nav-tel" href="tel:+8618601291984">186 0129 1984</a>
         <p>联系人：王萌 · 紧急问题 30 分钟内响应</p>
-        <a class="btn btn-outline" href="assets/game-qa-service-deck.pdf" download>下载服务方案 PDF</a>
+        <a class="btn btn-outline" href="#contact">预约测试方案<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </nav>
 
@@ -134,9 +135,7 @@
         </p>
         <div class="hero-actions reveal" style="--d:200ms">
           <a class="btn" href="#contact">预约测试方案<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn-outline" href="assets/game-qa-service-deck.pdf" download>
-            下载服务方案<svg class="ico" aria-hidden="true"><use href="#i-download"/></svg>
-          </a>
+          <a class="btn btn-outline" href="#service">查看服务范围<svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </div>
         <ul class="hero-stats reveal" style="--d:260ms">
           <li><strong data-count="15" data-suffix="+">15+</strong><span>年测试深耕</span></li>
@@ -375,6 +374,9 @@
         </li>
       </ul>
 
+      <p class="deliver-hint reveal">带下划线的交付物可<span class="hint-hover">鼠标悬停</span><span class="hint-touch">轻触</span>查看示例图</p>
+
+      <!-- 交付物预览：鼠标悬停 / 键盘聚焦 / 手机轻触可看示例图；替换 assets/img/tips/ 下同名图片即可 -->
       <div class="deliver-grid">
         <article class="deliver-card reveal">
           <figure><img src="assets/img/puzzle.jpg" width="1200" height="798" alt="拼图过程保障示意" loading="lazy"></figure>
@@ -385,8 +387,8 @@
               <li>专人对接 · 每日站会 · 周度评审</li>
               <li>专属对接群 · 共享文档 · 进度实时同步</li>
               <li>紧急问题 30 分钟内响应</li>
-              <li>测试计划提前 3 个工作日输出</li>
-              <li>版本测试日报 / 周报推送</li>
+              <li><button class="doc-tip" type="button" data-tip="assets/img/tips/test-plan.jpg" data-tip-title="测试计划示例" aria-haspopup="dialog" aria-expanded="false">测试计划</button>提前 3 个工作日输出</li>
+              <li>版本<button class="doc-tip" type="button" data-tip="assets/img/tips/daily-report.jpg" data-tip-title="测试日报示例" aria-haspopup="dialog" aria-expanded="false">测试日报</button> / <button class="doc-tip" type="button" data-tip="assets/img/tips/weekly-report.jpg" data-tip-title="周报示例" aria-haspopup="dialog" aria-expanded="false">周报推送</button></li>
             </ul>
           </div>
         </article>
@@ -397,10 +399,10 @@
             <span class="deliver-no">02</span>
             <h3>成果交付</h3>
             <ul>
-              <li>测试报告 · bug 清单 · 过程文档</li>
-              <li>专项测试报告 · 版本质量评估报告</li>
-              <li>测试用例库 · 自动化脚本沉淀</li>
-              <li>线上问题复盘与改进建议</li>
+              <li><button class="doc-tip" type="button" data-tip="assets/img/tips/test-report.jpg" data-tip-title="测试报告示例" aria-haspopup="dialog" aria-expanded="false">测试报告</button> · <button class="doc-tip" type="button" data-tip="assets/img/tips/bug-list.jpg" data-tip-title="Bug 清单示例" aria-haspopup="dialog" aria-expanded="false">bug 清单</button> · <button class="doc-tip" type="button" data-tip="assets/img/tips/process-docs.jpg" data-tip-title="过程文档示例" aria-haspopup="dialog" aria-expanded="false">过程文档</button></li>
+              <li><button class="doc-tip" type="button" data-tip="assets/img/tips/special-report.jpg" data-tip-title="专项测试报告示例" aria-haspopup="dialog" aria-expanded="false">专项测试报告</button> · <button class="doc-tip" type="button" data-tip="assets/img/tips/quality-report.jpg" data-tip-title="版本质量评估报告示例" aria-haspopup="dialog" aria-expanded="false">版本质量评估报告</button></li>
+              <li><button class="doc-tip" type="button" data-tip="assets/img/tips/test-cases.jpg" data-tip-title="测试用例库示例" aria-haspopup="dialog" aria-expanded="false">测试用例库</button> · <button class="doc-tip" type="button" data-tip="assets/img/tips/automation.jpg" data-tip-title="自动化脚本沉淀示例" aria-haspopup="dialog" aria-expanded="false">自动化脚本沉淀</button></li>
+              <li><button class="doc-tip" type="button" data-tip="assets/img/tips/retro.jpg" data-tip-title="线上问题复盘与改进建议示例" aria-haspopup="dialog" aria-expanded="false">线上问题复盘与改进建议</button></li>
             </ul>
           </div>
         </article>
@@ -567,9 +569,9 @@
           <svg class="ico" aria-hidden="true"><use href="#i-copy"/></svg>
           复制号码
         </button>
-        <a class="btn btn-ghost-light" href="assets/game-qa-service-deck.pdf" download>
-          <svg class="ico" aria-hidden="true"><use href="#i-download"/></svg>
-          下载方案
+        <a class="btn btn-ghost-light" href="#cases">
+          <svg class="ico" aria-hidden="true"><use href="#i-arrow"/></svg>
+          查看合作案例
         </a>
       </div>
 
@@ -608,7 +610,7 @@
       <h3>联系</h3>
       <a href="tel:+8618601291984">186 0129 1984</a>
       <p>联系人：王萌</p>
-      <a class="footer-pdf" href="assets/game-qa-service-deck.pdf" download>下载服务方案 PDF</a>
+      <a class="footer-cta" href="#contact">预约测试方案</a>
     </div>
   </div>
   <div class="shell footer-bottom">
@@ -617,14 +619,29 @@
   </div>
 </footer>
 
+<!-- 交付物图片预览 -->
+<div class="tip-scrim" id="tipScrim" aria-hidden="true"></div>
+<div class="tip-pop" id="tipPop" role="dialog" aria-modal="false" aria-label="交付物图片预览" aria-hidden="true">
+  <button class="tip-close" id="tipClose" type="button" aria-label="关闭图片预览">
+    <svg class="ico" aria-hidden="true"><use href="#i-close"/></svg>
+  </button>
+  <div class="tip-media">
+    <img id="tipImg" alt="" width="900" height="560">
+  </div>
+  <div class="tip-cap">
+    <span id="tipTitle">交付物预览</span>
+    <em>PREVIEW</em>
+  </div>
+</div>
+
 <div class="mobile-cta">
   <a class="btn" href="tel:+8618601291984"><svg class="ico" aria-hidden="true"><use href="#i-phone"/></svg>电话咨询</a>
-  <a class="btn btn-outline" href="assets/game-qa-service-deck.pdf" download>下载方案</a>
+  <a class="btn btn-outline" href="#contact">预约方案</a>
 </div>
 
 <div class="nav-scrim" id="navScrim" aria-hidden="true"></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-<script src="assets/js/main.js?v=20261104"></script>
+<script src="assets/js/main.js?v=20261114-tip"></script>
 </body>
 </html>

@@ -189,6 +189,199 @@
     });
   });
 
+  /* ---------- deliverable image preview ---------- */
+  var tipTriggers = Array.prototype.slice.call(document.querySelectorAll("[data-tip]"));
+  var tipPop = document.getElementById("tipPop");
+  var tipImg = document.getElementById("tipImg");
+  var tipTitle = document.getElementById("tipTitle");
+  var tipClose = document.getElementById("tipClose");
+  var tipScrim = document.getElementById("tipScrim");
+  var tipActive = null;
+  var tipPinned = false;
+  var tipShowTimer = null;
+  var tipHideTimer = null;
+  var tipCanHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+  function tipIsModal() {
+    return window.matchMedia("(max-width: 768px)").matches;
+  }
+
+  function tipVisible() {
+    return !!tipPop && tipPop.classList.contains("is-visible");
+  }
+
+  function tipPosition() {
+    if (!tipActive || !tipPop) return;
+    var rect = tipActive.getBoundingClientRect();
+    var vw = window.innerWidth;
+    var vh = window.innerHeight;
+    var pw = tipPop.offsetWidth;
+    var ph = tipPop.offsetHeight;
+    var modal = tipIsModal();
+
+    tipPop.classList.toggle("is-modal", modal);
+
+    if (modal) {
+      tipPop.style.left = Math.max(16, Math.round((vw - pw) / 2)) + "px";
+      tipPop.style.top = Math.max(16, Math.round((vh - ph) / 2)) + "px";
+      return;
+    }
+
+    var left = Math.round(rect.left + rect.width / 2 - pw / 2);
+    left = Math.max(16, Math.min(left, vw - pw - 16));
+    var above = rect.top > ph + 28;
+    var top = above ? Math.round(rect.top - ph - 12) : Math.round(rect.bottom + 12);
+    top = Math.max(12, Math.min(top, vh - ph - 12));
+
+    tipPop.style.left = left + "px";
+    tipPop.style.top = top + "px";
+    tipPop.classList.toggle("is-above", above);
+    tipPop.classList.toggle("is-below", !above);
+
+    var arrow = Math.round(rect.left + rect.width / 2 - left);
+    arrow = Math.max(18, Math.min(arrow, pw - 18));
+    tipPop.style.setProperty("--ax", arrow + "px");
+  }
+
+  function tipSyncModal() {
+    if (!tipPop) return;
+    var modal = tipPinned && tipIsModal();
+    tipPop.classList.toggle("is-modal", modal);
+    tipPop.setAttribute("aria-modal", modal ? "true" : "false");
+    if (tipScrim) {
+      tipScrim.classList.toggle("is-open", modal);
+      tipScrim.setAttribute("aria-hidden", modal ? "false" : "true");
+    }
+    document.body.classList.toggle("tip-open", modal);
+  }
+
+  function tipShow(trigger, pinned) {
+    if (!tipPop) return;
+    window.clearTimeout(tipHideTimer);
+    window.clearTimeout(tipShowTimer);
+
+    if (tipActive && tipActive !== trigger) {
+      tipActive.classList.remove("is-active");
+      tipActive.setAttribute("aria-expanded", "false");
+    }
+
+    tipActive = trigger;
+    trigger.classList.add("is-active");
+    trigger.setAttribute("aria-expanded", "true");
+
+    var src = trigger.getAttribute("data-tip");
+    var title = trigger.getAttribute("data-tip-title") || "交付物预览";
+    if (tipImg.getAttribute("src") !== src) {
+      tipPop.classList.remove("is-loaded");
+      tipImg.src = src;
+      tipImg.alt = title;
+    } else if (!tipImg.getAttribute("alt")) {
+      tipImg.alt = title;
+    }
+    tipTitle.textContent = title;
+
+    tipPinned = !!pinned;
+    tipPop.classList.toggle("is-pinned", tipPinned);
+    tipPop.classList.add("is-visible");
+    tipPop.setAttribute("aria-hidden", "false");
+    tipSyncModal();
+    tipPosition();
+  }
+
+  function tipHide(force) {
+    if (!tipPop || !tipVisible()) return;
+    if (tipPinned && !force) return;
+
+    tipPop.classList.remove("is-visible", "is-pinned", "is-modal", "is-above", "is-below");
+    tipPop.setAttribute("aria-hidden", "true");
+    tipPop.setAttribute("aria-modal", "false");
+    if (tipScrim) {
+      tipScrim.classList.remove("is-open");
+      tipScrim.setAttribute("aria-hidden", "true");
+    }
+    document.body.classList.remove("tip-open");
+
+    if (tipActive) {
+      tipActive.classList.remove("is-active");
+      tipActive.setAttribute("aria-expanded", "false");
+    }
+    tipActive = null;
+    tipPinned = false;
+  }
+
+  if (tipPop && tipTriggers.length) {
+    tipImg.addEventListener("load", function () { tipPop.classList.add("is-loaded"); });
+    tipImg.addEventListener("error", function () { tipPop.classList.remove("is-loaded"); });
+
+    tipTriggers.forEach(function (trigger) {
+      trigger.setAttribute("aria-controls", "tipPop");
+
+      trigger.addEventListener("mouseenter", function () {
+        if (!tipCanHover || tipPinned) return;
+        window.clearTimeout(tipHideTimer);
+        tipShowTimer = window.setTimeout(function () { tipShow(trigger, false); }, 120);
+      });
+
+      trigger.addEventListener("mouseleave", function () {
+        if (!tipCanHover || tipPinned) return;
+        window.clearTimeout(tipShowTimer);
+        tipHideTimer = window.setTimeout(function () { tipHide(false); }, 140);
+      });
+
+      trigger.addEventListener("focus", function () {
+        if (!tipCanHover) return;
+        window.clearTimeout(tipHideTimer);
+        tipShow(trigger, false);
+      });
+
+      trigger.addEventListener("blur", function () {
+        if (!tipPinned) tipHide(false);
+      });
+
+      trigger.addEventListener("click", function (event) {
+        event.preventDefault();
+        if (tipActive === trigger && tipPinned) {
+          tipHide(true);
+        } else {
+          tipShow(trigger, true);
+        }
+      });
+    });
+
+    if (tipClose) {
+      tipClose.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        tipHide(true);
+      });
+    }
+
+    if (tipScrim) {
+      tipScrim.addEventListener("click", function () { tipHide(true); });
+    }
+
+    document.addEventListener("click", function (event) {
+      if (!tipPinned) return;
+      if (tipPop.contains(event.target) || event.target.closest(".doc-tip")) return;
+      tipHide(true);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && tipVisible()) tipHide(true);
+    });
+
+    window.addEventListener("scroll", function () {
+      if (tipVisible()) tipHide(true);
+    }, { passive: true });
+
+    window.addEventListener("resize", function () {
+      if (tipVisible()) {
+        tipSyncModal();
+        tipPosition();
+      }
+    });
+  }
+
   /* ---------- mobile bottom bar: hide at contact, tuck away on scroll down ---------- */
   var mobileCta = document.querySelector(".mobile-cta");
   var contactSection = document.getElementById("contact");
