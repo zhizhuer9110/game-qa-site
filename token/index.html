@@ -20,7 +20,7 @@
   <link rel="canonical" href="https://zhizhuer9110.github.io/game-qa-site/token/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <script>document.documentElement.classList.add("js");</script>
-  <link rel="stylesheet" href="assets/token.css?v=20261116g">
+  <link rel="stylesheet" href="assets/token.css?v=20261130">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -573,7 +573,8 @@
             <tr><th scope="col">模型</th><th scope="col">官网标准价（100%）</th><th scope="col">T1（95%）</th><th scope="col">T3（88%）</th><th scope="col" class="col-best">T6（76%）</th><th scope="col">T6 降幅</th></tr>
           </thead>
           <tbody>
-            <tr><th scope="row">DeepSeek-Flash</th><td>1.00 / 4.00</td><td>0.95 / 3.80</td><td>0.88 / 3.52</td><td class="col-best">0.76 / 3.04</td><td><span class="cut">24%</span></td></tr>
+            <tr><th scope="row">DeepSeek-Flash<span class="row-tag">空闲时</span></th><td>1.00 / 4.00</td><td>0.95 / 3.80</td><td>0.88 / 3.52</td><td class="col-best">0.76 / 3.04</td><td><span class="cut">24%</span></td></tr>
+            <tr><th scope="row">DeepSeek-Flash<span class="row-tag is-peak">高峰时</span></th><td>2.00 / 8.00</td><td>1.90 / 7.60</td><td>1.76 / 7.04</td><td class="col-best">1.52 / 6.08</td><td><span class="cut">24%</span></td></tr>
             <tr><th scope="row">glm-5.3</th><td>8.00 / 28.00</td><td>7.60 / 26.60</td><td>7.04 / 24.64</td><td class="col-best">6.08 / 21.28</td><td><span class="cut">24%</span></td></tr>
             <tr><th scope="row">glm-5.3-Flash</th><td>0.80 / 2.80</td><td>0.76 / 2.66</td><td>0.704 / 2.464</td><td class="col-best">0.608 / 2.128</td><td><span class="cut">24%</span></td></tr>
             <tr><th scope="row">Kimi K3</th><td>20.00 / 100.00</td><td>19.00 / 95.00</td><td>17.60 / 88.00</td><td class="col-best">15.20 / 76.00</td><td><span class="cut">24%</span></td></tr>
@@ -584,7 +585,7 @@
         </table>
       </div>
       <p class="scroll-hint">左右滑动查看 T1 / T3 / T6 完整价目 <span aria-hidden="true">→</span></p>
-      <p class="table-note reveal">DeepSeek 分空闲 / 高峰两个时段，高峰输入、输出按上表空闲价的 2 倍计；上表展示空闲价。</p>
+      <p class="table-note reveal">DeepSeek 拆成「空闲时 / 高峰时」两行；高峰输入、输出为空闲价的 2 倍。其余型号空闲与高峰同价。</p>
       <p class="table-note reveal">kimi-k3.1-pro（自部署）在 T5 / T6 触底于 10.40 / 54.40，不再随档位下降，这是成本决定的硬底。</p>
 
       <div class="sub-head reveal">
