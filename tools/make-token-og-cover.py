@@ -68,7 +68,7 @@ def main() -> None:
 
     # 底部数据
     draw.line([(pad, 526), (pad + 470, 526)], fill=LINE, width=1)
-    draw.text((pad, 548), "6 档位 · 12 个月有效期 · 90 天报价有效期", font=cjk(20, bold=True), fill=NAVY, anchor="la")
+    draw.text((pad, 548), "6 档位 · 12 个月有效期 · 报价至 11.30", font=cjk(20, bold=True), fill=NAVY, anchor="la")
     tracked(draw, (pad, 592), "ZHIZHUER9110.GITHUB.IO/GAME-QA-SITE/TOKEN", latin(12), MUTED, 1.9)
 
     # 右侧费率卡
@@ -79,7 +79,7 @@ def main() -> None:
 
     px = panel_x + 44
     tracked(draw, (px, 60), "TOKEN RATE CARD", latin(14), (196, 202, 222), 3.4)
-    draw.text((W - 44, 60), "V1.0 / 2026", font=latin(11), fill=RED_LIGHT, anchor="ra")
+    draw.text((W - 44, 60), "V1.1 / 2026.11.30", font=latin(11), fill=RED_LIGHT, anchor="ra")
     draw.line([(px, 96), (W - 44, 96)], fill=(80, 98, 150), width=1)
 
     # 表头
