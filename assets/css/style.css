@@ -1839,3 +1839,16 @@ body.nav-open .mobile-cta { opacity: 0; pointer-events: none; }
   .svc-card:last-child .svc-media { height: auto; }
   .svc-card:last-child .svc-media img { height: auto; aspect-ratio: 16 / 9; }
 }
+
+/* 发行测试三项：缩小字号，保证每项单行 */
+.svc-list-release { gap: 8px 10px; }
+.svc-list-release li {
+  padding-left: 13px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.svc-list-release li::before {
+  width: 4px;
+  height: 4px;
+  top: .68em;
+}
