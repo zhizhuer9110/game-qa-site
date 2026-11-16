@@ -717,7 +717,7 @@ body.nav-open { overflow: hidden; }
 /* ---------- Service ---------- */
 .service-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: clamp(20px, 3vw, 32px);
 }
 .svc-card {
@@ -1781,4 +1781,61 @@ body.nav-open .mobile-cta { opacity: 0; pointer-events: none; }
   }
   .js .reveal { opacity: 1; transform: none; }
   .marquee-track { animation: none; }
+}
+
+/* 域核科技品牌：Logo + 公司全称 */
+.brand { gap: 10px; }
+.brand-logo { height: 26px; width: auto; display: block; flex: none; }
+.brand-text strong { font-size: 13px; letter-spacing: .06em; white-space: nowrap; }
+.brand-text em { letter-spacing: .18em; }
+.footer-logo { height: 24px; width: auto; display: block; }
+.footer-company {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--paper);
+}
+.footer-brand p { margin-top: 8px; }
+@media (max-width: 760px) {
+  .brand { gap: 8px; }
+  .brand-logo { height: 20px; }
+  .brand-text strong { font-size: 11.5px; letter-spacing: .04em; }
+  .brand-text em { display: none; }
+}
+@media (max-width: 380px) {
+  .brand-logo { height: 18px; }
+  .brand-text strong { font-size: 10.5px; }
+}
+
+/* 三张服务卡：中屏 2+1，手机端单列 */
+@media (max-width: 1080px) {
+  .service-grid { grid-template-columns: 1fr 1fr; }
+  .svc-card:last-child {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .svc-card:last-child .svc-media { height: 100%; }
+  .svc-card:last-child .svc-media img {
+    height: 100%;
+    aspect-ratio: auto;
+    object-fit: cover;
+  }
+  .svc-card:last-child .svc-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+@media (max-width: 900px) {
+  .service-grid { grid-template-columns: 1fr; }
+  .svc-card:last-child {
+    display: flex;
+    flex-direction: column;
+    grid-column: auto;
+  }
+  .svc-card:last-child .svc-media { height: auto; }
+  .svc-card:last-child .svc-media img { height: auto; aspect-ratio: 16 / 9; }
 }
