@@ -2290,3 +2290,29 @@ body.nav-open .mobile-cta { opacity: 0; pointer-events: none; }
   .section { padding: 24px 0; }
   .js .reveal { opacity: 1; transform: none; }
 }
+
+/* 域核科技品牌：Logo + 公司全称 */
+.brand { gap: 10px; }
+.brand-logo { height: 26px; width: auto; display: block; flex: none; }
+.brand-text strong { font-size: 13px; letter-spacing: .06em; white-space: nowrap; }
+.brand-text em { letter-spacing: .16em; }
+.footer-logo { height: 24px; width: auto; display: block; }
+.footer-company {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--paper);
+}
+.footer-brand p { margin-top: 8px; }
+@media (max-width: 760px) {
+  .brand { gap: 8px; }
+  .brand-logo { height: 20px; }
+  .brand-text strong { font-size: 11.5px; letter-spacing: .04em; }
+  .brand-text em { display: none; }
+}
+@media (max-width: 380px) {
+  .brand-logo { height: 18px; }
+  .brand-text strong { font-size: 10.5px; }
+}
